@@ -2,8 +2,8 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 0;
-  background-color: #FFFCFF;
-  //background-color: cornflowerblue;
+  //background-color: #FFFCFF;
+  background-color: lightblue;
 }
 button {
   width: 75px;
