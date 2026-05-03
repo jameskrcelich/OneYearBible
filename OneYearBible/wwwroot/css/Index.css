@@ -15,7 +15,6 @@ button {
   border-radius: 5px;
   color: white;
 }
-
 #header {
   padding: 10px;
   color: #d36c6c;
@@ -31,7 +30,9 @@ button {
     gap: 5px;
 }
 #header button {
-  background-color:#92a1d1;
+  // background-color:#92a1d1;
+  // background-color: #a52834;
+  background-color: #d36c6c;
   font-size: 14px;
   padding: 5px 10px;
 }
@@ -72,9 +73,9 @@ button {
 .day:hover {
   background-color: #e8faed;
 }
-
 .day + #currentDay {
-  background-color:#e8f4fa;
+/*  background-color:#e8f4fa; */
+    background-color: #92a1d1;
 }
 .event {
   font-size: 10px;
@@ -90,16 +91,13 @@ button {
   background-color: #FFFCFF !important;
   box-shadow: none !important;
 }
-#newEventModal, #deleteEventModal {
+#newEventModal {
   display: none;
   z-index: 20;
   padding: 35px;
   background-color: #e8f4fa;
   box-shadow: 0px 0px 3px black;
   border-radius: 5px;
-  /*width: 350px;*/
-  /*top: 100px;*/
-  /*left: calc(50% - 175px);*/
   width: 700px;  
   max-height: 80vh;
   overflow-y: auto;
@@ -108,15 +106,12 @@ button {
   position: absolute;
   font-family: sans-serif;
 }
-
 #eventTitleInput.error {
   border: 2px solid red;
 }
-/*#cancelButton, #deleteButton {
+#closeButton {
+  //background-color: #92a1d1;
   background-color: #d36c6c;
-}*/
-#saveButton, #closeButton {
-  background-color: #92a1d1;
 }
 #eventText {
   font-size: 14px;

@@ -17,7 +17,7 @@ public class Program
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Home/Error");
-            // The default HSTS value is 30 days. You may want to change this for Prosduction scenarios, see https://aka.ms/aspnetcore-hsts.
+            // The default HSTS value is 30 days. You may want to change this for Production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
 

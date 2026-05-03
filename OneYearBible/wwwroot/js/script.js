@@ -4,9 +4,7 @@ let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('e
 
 const calendar = document.getElementById('calendar');
 const newEventModal = document.getElementById('newEventModal');
-//const deleteEventModal = document.getElementById('deleteEventModal');
 const backDrop = document.getElementById('modalBackDrop');
-// const eventTitleInput = document.getElementById('eventTitleInput');
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 function openModal(date) 
@@ -18,7 +16,6 @@ function openModal(date)
     if (eventForDay) 
     {
         document.getElementById('eventText').innerText = eventForDay.title;
-        deleteEventModal.style.display = 'block';
         backDrop.style.display = 'block';
     } 
     else 
@@ -58,7 +55,9 @@ function openModal(date)
         .catch(() => {
               document.getElementById('modalLoading').innerText = 'failed to load readings';
         })
-    }
+        
+    } // End - if/else
+    
 } // End - openModal()
 
 function load() 
@@ -69,9 +68,9 @@ function load()
         dt.setMonth(new Date().getMonth() + nav);
     }
 
-    const day = dt.getDate();
+    const day   = dt.getDate();
     const month = dt.getMonth();
-    const year = dt.getFullYear();
+    const year  = dt.getFullYear();
 
     const firstDayOfMonth = new Date(year, month, 1);
     const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -120,27 +119,19 @@ function load()
         }
         calendar.appendChild(daySquare);    
     
-    } // for
+    } // for loop
         
 } // End - load()
 
 function closeModal() 
 {
-    // eventTitleInput.classList.remove('error');
     newEventModal.style.display = 'none';
-    deleteEventModal.style.display = 'none';
     backDrop.style.display = 'none';
-    // eventTitleInput.value = '';
     clicked = null;
+    
     load();
-}
-
-/* function deleteEvent() 
-{
-    events = events.filter(e => e.date !== clicked);
-    localStorage.setItem('events', JSON.stringify(events));
-    closeModal();
-} */
+    
+} // End - closeModal()
 
 function initButtons() 
 {
@@ -154,9 +145,6 @@ function initButtons()
         load();
     });
 
-    //document.getElementById('saveButton').addEventListener('click', saveEvent);
-    //document.getElementById('cancelButton').addEventListener('click', closeModal);
-    //document.getElementById('deleteButton').addEventListener('click', deleteEvent);
     document.getElementById('closeButton').addEventListener('click', closeModal);
 }
 

@@ -2,7 +2,6 @@ using System.Diagnostics;
 using OneYearBible;
 using Microsoft.AspNetCore.Mvc;
 using OneYearBible.Models;
-using OneYearBible.Models;
 
 namespace OneYearBible.Controllers;
 

@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Html;
 using Microsoft.JSInterop;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using OneYearBible.Models;
 
 namespace OneYearBible;
 
