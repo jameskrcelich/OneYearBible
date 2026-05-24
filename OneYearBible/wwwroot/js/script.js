@@ -1,63 +1,51 @@
-let nav  = 0;
-let clicked = null;
-let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
+let nav= 0;
+let clicked= null;
 
 const calendar = document.getElementById('calendar');
+const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const newEventModal = document.getElementById('newEventModal');
 const backDrop = document.getElementById('modalBackDrop');
-const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 function openModal(date) 
 {
     clicked = date;
 
-    const eventForDay = events.find(e => e.date === clicked);
-
-    if (eventForDay) 
-    {
-        document.getElementById('eventText').innerText = eventForDay.title;
-        backDrop.style.display = 'block';
-    } 
-    else 
-    {
-        const [month, day, year] = date.split('/');
-        const apiDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    const [month, day, year] = date.split('/');
+    const apiDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
     
-        document.getElementById('modalDate').innerText = '';
-        document.getElementById('otRef').innerText = '';
-        document.getElementById('otText').innerHTML = '';
-        document.getElementById('ntRef').innerText = '';
-        document.getElementById('ntText').innerHTML = '';
-        document.getElementById('psalmRef').innerText = '';
-        document.getElementById('psalmText').innerHTML = '';
-        document.getElementById('proverbRef').innerText = '';
-        document.getElementById('proverbText').innerHTML = '';
-        document.getElementById('modalLoading').style.display = 'block';
+    document.getElementById('modalDate').innerText = '';
+    document.getElementById('otRef').innerText = '';
+    document.getElementById('otText').innerHTML = '';
+    document.getElementById('ntRef').innerText = '';
+    document.getElementById('ntText').innerHTML = '';
+    document.getElementById('psalmRef').innerText = '';
+    document.getElementById('psalmText').innerHTML = '';
+    document.getElementById('proverbRef').innerText = '';
+    document.getElementById('proverbText').innerHTML = '';
+    document.getElementById('modalLoading').style.display = 'block';
     
-        newEventModal.style.display = 'block';
-        backDrop.style.display = 'block';
+    backDrop.style.display = 'block';
+    newEventModal.style.display = 'block';
     
-        fetch(`/Home/GetReadings?date=${apiDate}`)
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('modalLoading').style.display = 'none';
-                document.getElementById('modalDate').innerText = data.monthDay;
-                document.getElementById('otRef').innerText = data.oldTestamentVerses;
-                document.getElementById('otText').innerHTML = data.apiText[0];
-                document.getElementById('ntRef').innerText = data.newTestamentVerses;
-                document.getElementById('ntText').innerHTML = data.apiText[1];
-                document.getElementById('psalmRef').innerText = data.psalmVerses;
-                document.getElementById('psalmText').innerHTML = data.apiText[2];
-                document.getElementById('proverbRef').innerText = data.proverbVerses;
-                document.getElementById('proverbText').innerHTML = data.apiText[3];
+    fetch(`/Home/GetReadings?date=${apiDate}`)
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('modalLoading').style.display = 'none';
+            document.getElementById('modalDate').innerText = data.monthDay;
+            document.getElementById('otRef').innerText = data.oldTestamentVerses;
+            document.getElementById('otText').innerHTML = data.apiText[0];
+            document.getElementById('ntRef').innerText = data.newTestamentVerses;
+            document.getElementById('ntText').innerHTML = data.apiText[1];
+            document.getElementById('psalmRef').innerText = data.psalmVerses;
+            document.getElementById('psalmText').innerHTML = data.apiText[2];
+            document.getElementById('proverbRef').innerText = data.proverbVerses;
+            document.getElementById('proverbText').innerHTML = data.apiText[3];
           
-        })
-        .catch(() => {
-              document.getElementById('modalLoading').innerText = 'failed to load readings';
-        })
+    })
+    .catch(() => {
+        document.getElementById('modalLoading').innerText = 'failed to load readings';
+    })
         
-    } // End - if/else
-    
 } // End - openModal()
 
 function load() 
@@ -72,8 +60,8 @@ function load()
     const month = dt.getMonth();
     const year  = dt.getFullYear();
 
-    const firstDayOfMonth = new Date(year, month, 1);
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const firstDayOfMonth= new Date(year, month, 1);
+    const daysInMonth  = new Date(year, month + 1, 0).getDate();
   
     const dateString = firstDayOfMonth.toLocaleDateString('en-us', {
             weekday: 'long',
@@ -98,19 +86,14 @@ function load()
         if (i > paddingDays) 
         {
             daySquare.innerText = i - paddingDays;
-            const eventForDay = events.find(e => e.date === dayString);
-
+            
             if (i - paddingDays === day && nav === 0) {
                 daySquare.id = 'currentDay';
             }
 
-            if (eventForDay) {
-                const eventDiv = document.createElement('div');
-                eventDiv.classList.add('event');
-                eventDiv.innerText = eventForDay.title;
-                daySquare.appendChild(eventDiv);
-            }
-
+            /* User has clicked a valid day (not a padding day), so call openModal()
+             * to process the day clicked to display the daily scriptures
+             */
             daySquare.addEventListener('click', () => openModal(dayString));
         } 
         else 
