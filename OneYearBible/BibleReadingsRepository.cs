@@ -13,7 +13,9 @@ namespace OneYearBible;
 public class BibleReadingsRepository : IBibleReadingsRepository
 {
     private readonly BibleReadings repo;
+    private readonly IWebHostEnvironment env;
     static  readonly HttpClient    client = new HttpClient();
+    public string WebRoot { get; set; }
     
     public BibleReadingsRepository()
     {
@@ -29,9 +31,14 @@ public class BibleReadingsRepository : IBibleReadingsRepository
     {
         // get the day of the current year
         string monthPrefix = MonthFilePrefix[date.Month];
-       
+
+        string appFolder = AppContext.BaseDirectory;
+        string webRoot = WebRoot;
+        
         // The "month" text files contain all the readings for each day/month
-        string fileLoc = Path.Combine(AppContext.BaseDirectory, "..", "..", "..","wwwroot", $"{monthPrefix}Verses.txt");
+        //string fileLoc = Path.Combine(AppContext.BaseDirectory, "wwwroot", $"{monthPrefix}Verses.txt");
+        //string fileLoc = Path.Combine(appFolder, "..", "..", "..","wwwroot", $"{monthPrefix}Verses.txt");
+        string fileLoc = Path.Combine(webRoot, $"{monthPrefix}Verses.txt");
         string line = File.ReadLines(fileLoc).ElementAtOrDefault(date.Day - 1);
 
         // Delimiter is semicolon

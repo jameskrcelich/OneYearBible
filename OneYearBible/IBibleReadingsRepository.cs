@@ -6,4 +6,6 @@ namespace OneYearBible;
 public interface IBibleReadingsRepository
 {
     public Task<BibleReadings> GetAllBibleReadings(DateOnly date);
+    public string WebRoot { get; set; }
 }
+

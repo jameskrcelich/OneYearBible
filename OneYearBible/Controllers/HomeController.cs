@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using OneYearBible;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Hosting;
 using OneYearBible.Models;
 
 namespace OneYearBible.Controllers;
@@ -9,11 +10,12 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly IBibleReadingsRepository _repo;
-
-    public HomeController(ILogger<HomeController> logger, IBibleReadingsRepository repo)
+    
+    public HomeController(ILogger<HomeController> logger, IBibleReadingsRepository repo, IWebHostEnvironment env)
     {
         _repo = repo;
         _logger = logger;
+        _repo.WebRoot = env.WebRootPath;
     }
     
     public IActionResult Index()
