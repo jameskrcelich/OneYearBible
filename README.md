@@ -1,0 +1,22 @@
+This project represents a one year bible application, which provides the user with readings that enable him/her to read the bible in one year. 
+Four readings are provided which include an old testament reading, a new testament reading, a psalm and couple verses of proverbs. There are 150 Psalms 
+in the old testament so they will read the Psalms twice during the year. The old testament represents about 3/4 of the bible so the reader will read a 
+few chapters of the old testament each day, and the reader will read about one chapter from the new testament. If it's too much reading, perhaps the 
+user can read the old testament one year and the read the new testament, psalms, and proverbs the following year. Or, even further divide it for 3 years.
+
+The project was implemented by issuing API https calls to the bible.org server. As mentioned before, 4 separate readings are given for each day. Thus, 4 
+https calls are issued to the API server. These calls can be reduced to one call as an improvement to cut down on network delay. ASPNET.MVC was also utilized 
+as part of the design. All the CRUD operations are not required since we are just interested in fetching the daily scriptures.
+
+In researching youtube videos to help further my understanding of ASPNET, I found a video that provides a plain calendar in javascript along with the html, 
+css, and javascript files. This calendar helped simplify the graphical user interface. As a result, the application initializes with the display of the current 
+calendar month, and the current day is highlighted. If the user needs to go back or forward to a different month, back and forward buttons are provided for this.
+
+All the user needs to do is click on the day of the calendar, and a new window is created with the 4 readings for the day. There are 12 monthly files (e.g., JanVerses.txt) 
+located in the wwwroot directory. These files represent the "key" of all the daily readings for the entire year. Each of the readings for each day are delineated with semicolons. 
+The api server parses the semicolons so it works well for that. The BibleReadings.cs provides the data structure/class of the readings, and the BibleReadingsRepository.cs provides 
+the logic for requesting the readings and awaiting the responses from the bible.org server.
+
+Finally, the script.js represents the javascript logic for the calendar. In that file, the openModal() function services the click from the user so logic was added there 
+to obtain the readings for the date clicked by the user and creating the window displaying the 4 readings. A close button at the bottom of this screen is provided to close 
+out this window and returned to the initial screen.
