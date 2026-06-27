@@ -33,10 +33,6 @@ public class Program
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
         
-        //string webRoot = app.Environment.WebRootPath;
-        string webRoot = app.Environment.WebRootPath;
-        Console.WriteLine($"WebRoot is {webRoot}");
-            
         app.Run();
         
     } // End - main()

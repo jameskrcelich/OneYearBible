@@ -13,7 +13,7 @@
 10-13;Jeremiah+22:1-23:20;2Thessalonians+1:1-12;Psalm+83:1-18;Proverbs+25:11-14
 10-14;Jeremiah+23:21-25:38;2Thessalonians+2:1-17;Psalm+84:1-12;Proverbs+25:15
 10-15;Jeremiah+26:1-27:22;2Thessalonians+3:1-18;Psalm+85:1-13;Proverbs+25:16
-10-16;Jeremiah+28;1-29:32;1Timothy+1:1-20;Psalm+86:1-17;Proverbs+25:17
+10-16;Jeremiah+28:1-29:32;1Timothy+1:1-20;Psalm+86:1-17;Proverbs+25:17
 10-17;Jeremiah+30:1-31:26;1Timothy+2:1-15;Psalm+87:1-7;Proverbs+25:18-19
 10-18;Jeremiah+31:27-32:44;1Timothy+3:1-16;Psalm+88:1-18;Proverbs+25:20-22
 10-19;Jeremiah+33:1-34:22;1Timothy+4:1-16;Psalm+89:1-13;Proverbs+25:23-24

@@ -27,5 +27,5 @@
 11-27;Daniel+4:1-37;2Peter+1:1-21;Psalm+119:97-112;Proverbs+28:17-18
 11-28;Daniel+5:1-31;2Peter+2:1-22;Psalm+119:113-128;Proverbs+28:19-20
 11-29;Daniel+6:1-28;2Peter+3:1-18;Psalm+119:129-152;Proverbs+28:21-22
-11-30;Daniel+7:1-28;1John1:1-10;Psalm+119:153-176;Proverbs+28:23-24
+11-30;Daniel+7:1-28;1John+1:1-10;Psalm+119:153-176;Proverbs+28:23-24
 
