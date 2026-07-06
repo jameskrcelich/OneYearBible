@@ -41,6 +41,8 @@ public class BibleReadingsRepository : IBibleReadingsRepository
 
         repo.monthDay = readings[0];
         
+        Console.WriteLine("hitting biblereadings");
+        
         // Get rid of the + signs the server requires so they don't print to the user later on
         repo.OldTestamentVerses = readings[1].Replace('+', ' ');
         repo.NewTestamentVerses = readings[2].Replace('+', ' ');
@@ -58,6 +60,7 @@ public class BibleReadingsRepository : IBibleReadingsRepository
              * full formatting means the server sends back the text with all the html formatting.
              */
             string url = $"https://labs.bible.org/api/?passage={readings[i]}&formatting=full";
+            //string url = $"https://labs.bible.org/api/?passage={readings[1]};{readings[2]}&formatting=full";
                 
             try
             {
